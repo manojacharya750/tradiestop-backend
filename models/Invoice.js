@@ -33,7 +33,12 @@ const invoiceSchema = new mongoose.Schema({
         type: String, 
         required: true, 
         enum: ['Paid', 'Pending', 'Overdue'] 
-    }
+    },
+    // New fields
+    taxRate: { type: Number, required: true, default: 10 },
+    themeColor: { type: String, default: '#334155' },
+    footerNotes: { type: String },
+    logoUrl: { type: String },
 }, { timestamps: true, _id: false });
 
 // Add a transform to rename _id to id for frontend compatibility
