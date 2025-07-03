@@ -10,9 +10,9 @@ import Notification from '../models/Notification.js';
 const createInvoice = async (req, res) => {
     const { 
         bookingId, items, notes, 
-        clientName, clientAddress, 
+        clientName, clientAddress, clientEmail, clientPhone, jobAddress,
         invoiceNumber, issueDate, dueDate, 
-        taxRate, themeColor, footerNotes, logoUrl 
+        taxRate, themeColor, footerNotes, logoDataUrl, signatureDataUrl
     } = req.body;
     
     const tradieUser = req.user;
@@ -47,7 +47,10 @@ const createInvoice = async (req, res) => {
                 id: clientUser.id,
                 name: clientName,
                 address: clientAddress,
+                email: clientEmail,
+                phone: clientPhone,
             },
+            jobAddress,
             invoiceNumber,
             issueDate,
             dueDate,
@@ -60,7 +63,8 @@ const createInvoice = async (req, res) => {
             taxRate,
             themeColor,
             footerNotes,
-            logoUrl,
+            logoDataUrl,
+            signatureDataUrl,
         });
 
         const createdInvoice = await newInvoice.save();
