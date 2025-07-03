@@ -8,7 +8,13 @@ import Notification from '../models/Notification.js';
 // @route   POST /api/invoices
 // @access  Private (Tradie only)
 const createInvoice = async (req, res) => {
-    const { bookingId, items, notes } = req.body;
+    const { 
+        bookingId, items, notes, 
+        clientName, clientAddress, 
+        invoiceNumber, issueDate, dueDate, 
+        taxRate, themeColor, footerNotes, logoUrl 
+    } = req.body;
+    
     const tradieUser = req.user;
 
     if (tradieUser.role !== 'Tradie') {
@@ -24,13 +30,9 @@ const createInvoice = async (req, res) => {
         const tradieProfile = await Tradie.findOne({ id: tradieUser.id }).populate('companyDetails');
         const clientUser = await User.findOne({ id: booking.clientId });
 
-        const subtotal = items.reduce((acc, item) => acc + item.quantity * item.unitPrice, 0);
-        const tax = subtotal * 0.10; // 10% tax
-        const total = subtotal + tax;
-
-        const issueDate = new Date();
-        const dueDate = new Date();
-        dueDate.setDate(issueDate.getDate() + 15); // Due in 15 days
+        const subtotal = items.reduce((acc, item) => acc + (item.quantity * item.unitPrice || 0), 0);
+        const taxAmount = subtotal * (taxRate / 100);
+        const total = subtotal + taxAmount;
 
         const newInvoice = new Invoice({
             _id: `inv${new Date().getTime()}`,
@@ -43,18 +45,22 @@ const createInvoice = async (req, res) => {
             },
             client: {
                 id: clientUser.id,
-                name: clientUser.name,
-                address: '456 Client Avenue, Resi Town, 12345', // Mock address, ideally from user profile
+                name: clientName,
+                address: clientAddress,
             },
-            invoiceNumber: `#${Math.floor(10000 + Math.random() * 90000)}`,
-            issueDate: issueDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
-            dueDate: dueDate.toLocaleDateString('en-US', { month: 'long', day: 'numeric', year: 'numeric' }),
+            invoiceNumber,
+            issueDate,
+            dueDate,
             items: items.map((item, index) => ({ ...item, id: `item${index + 1}` })),
             notes,
             subtotal,
-            tax,
+            tax: taxAmount,
             total,
             status: 'Pending',
+            taxRate,
+            themeColor,
+            footerNotes,
+            logoUrl,
         });
 
         const createdInvoice = await newInvoice.save();
