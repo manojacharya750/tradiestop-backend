@@ -1,0 +1,31 @@
+{
+  "users": [
+    { "id": "client1", "password": "password", "role": "Client", "name": "Sarah Wilson", "imageUrl": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=200&auto=format&fit=crop", "joinedDate": "April 1, 2024" },
+    { "id": "tradie1", "password": "password", "role": "Tradie", "name": "Ethan Johnson", "imageUrl": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=200&auto=format&fit=crop", "joinedDate": "April 5, 2024" },
+    { "id": "admin1", "password": "password", "role": "Admin", "name": "Alex Riley", "imageUrl": "https://images.unsplash.com/photo-1542909168-82c3e7fdca5c?q=80&w=200&auto=format&fit=crop", "joinedDate": "April 10, 2024" }
+  ],
+  "companydetails": [
+    { "tradieId": "tradie1", "name": "Sparky Solutions Inc.", "address": "123 Power Lane, Volt City, 54321", "phone": "(555) 123-4567", "email": "contact@sparkysolutions.com", "taxId": "ABN: 12 345 678 901", "logoUrl": "https://i.imgur.com/gEy5ZNe.png" }
+  ],
+  "tradies": [
+    { "id": "tradie1", "name": "Ethan Johnson", "profession": "Electrician", "rating": 4.8, "imageUrl": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=200&auto=format&fit=crop", "availability": "Available Now", "reviewsCount": 32 }
+  ],
+  "bookings": [
+    { "_id": "b1", "clientId": "client1", "clientName": "Sarah Wilson", "clientImageUrl": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=200&auto=format&fit=crop", "tradieId": "tradie1", "tradieName": "Ethan Johnson", "tradieProfession": "Electrician", "tradieImageUrl": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=200&auto=format&fit=crop", "serviceDate": "May 28, 2024, 9:00 AM", "status": "Confirmed", "details": "Consultation for new home wiring." },
+    { "_id": "b4", "clientId": "client1", "clientName": "Sarah Wilson", "clientImageUrl": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=200&auto=format&fit=crop", "tradieId": "tradie1", "tradieName": "Ethan Johnson", "tradieProfession": "Electrician", "tradieImageUrl": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=200&auto=format&fit=crop", "serviceDate": "April 15, 2024, 10:00 AM", "status": "Completed", "details": "Installed new outdoor lighting." }
+  ],
+  "messages": [
+    { "_id": "m1", "senderName": "Ethan Johnson", "snippet": "On my way, should be there in 15 minutes!", "timestamp": "5m ago", "avatarUrl": "https://images.unsplash.com/photo-1556157382-97eda2d62296?q=80&w=200&auto=format&fit=crop" }
+  ],
+  "invoices": [
+    { "_id": "inv1", "bookingId": "b4", "tradie": { "id": "tradie1", "name": "Ethan Johnson", "profession": "Electrician" }, "client": { "id": "client1", "name": "Sarah Wilson", "address": "456 Client Avenue, Resi Town, 12345" }, "invoiceNumber": "#12546", "issueDate": "April 16, 2024", "dueDate": "May 1, 2024", "items": [{ "id": "item1", "description": "Labor for outdoor lighting installation", "quantity": 3, "unitPrice": 40 }, { "id": "item2", "description": "LED Weatherproof Light Fixture", "quantity": 2, "unitPrice": 35 }], "notes": "Thank you for your business! Please pay within 15 days.", "subtotal": 190, "tax": 19, "total": 209, "status": "Paid" }
+  ],
+  "reviews": [
+    { "_id": "r1", "bookingId": "b4", "reviewerId": "client1", "reviewerName": "Sarah Wilson", "reviewerImageUrl": "https://images.unsplash.com/photo-1509967419530-da38b4704bc6?q=80&w=200&auto=format&fit=crop", "tradieId": "tradie1", "tradieName": "Ethan Johnson", "rating": 5, "comment": "Ethan was fantastic! Quick, professional, and did an amazing job with the outdoor lighting. Highly recommended.", "date": "April 16 2024" }
+  ],
+  "clientreviews": [],
+  "supporttickets": [
+    { "_id": "t1", "userId": "client1", "userName": "Sarah Wilson", "userRole": "Client", "subject": "Issue with payment", "description": "Hi, I'm having trouble processing the payment for invoice #12546. The system gives me an error.", "status": "Open", "date": "May 25, 2024" }
+  ],
+  "notifications": []
+}
