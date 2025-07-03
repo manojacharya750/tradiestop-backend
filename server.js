@@ -24,7 +24,8 @@ const app = express();
 const allowedOrigins = [
     'http://localhost:5173', // Your React dev server (Vite default)
     'http://localhost:3000', // Common for create-react-app dev server
-    'https://686652c3cc9662c1fb8111f2--chipper-cucurucho-a61e9c.netlify.app', // Your specific Netlify frontend URL
+    'https://686652c3cc9662c1fb8111f2--chipper-cucurucho-a61e9c.netlify.app', 
+    'https://www.tradiestop.online',// Your specific Netlify frontend URL
     // Add any other Netlify preview URLs or your custom domain here once you set it up.
     // E.g., 'https://www.tradiestop.online', 'https://tradiestop-dev.netlify.app'
 ];
