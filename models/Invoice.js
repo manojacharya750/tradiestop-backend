@@ -20,7 +20,10 @@ const invoiceSchema = new mongoose.Schema({
         id: { type: String, required: true, ref: 'User' },
         name: String,
         address: String,
+        email: String,
+        phone: String,
     },
+    jobAddress: { type: String },
     invoiceNumber: { type: String, required: true },
     issueDate: { type: String, required: true },
     dueDate: { type: String, required: true },
@@ -38,7 +41,8 @@ const invoiceSchema = new mongoose.Schema({
     taxRate: { type: Number, required: true, default: 10 },
     themeColor: { type: String, default: '#334155' },
     footerNotes: { type: String },
-    logoUrl: { type: String },
+    logoDataUrl: { type: String },
+    signatureDataUrl: { type: String },
 }, { timestamps: true, _id: false });
 
 // Add a transform to rename _id to id for frontend compatibility
